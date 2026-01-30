@@ -11,14 +11,14 @@ import com.seattlesolvers.solverslib.gamepad.GamepadEx;
 public class ResetSpindexerOp extends CommandOpMode {
     private GamepadEx driver1;
     private DcMotor spindexer;
-    private Servo led;
+//    private Servo led;
     private ElapsedTime timer;
 
     @Override
     public void initialize() {
         driver1 = new GamepadEx(gamepad1);
         spindexer = hardwareMap.get(DcMotor.class, "spindexer");
-        led = hardwareMap.get(Servo.class, "led");
+//        led = hardwareMap.get(Servo.class, "led");
         timer = new ElapsedTime(); // ✅ initialize timer before use
         super.reset();
     }
@@ -41,7 +41,7 @@ public class ResetSpindexerOp extends CommandOpMode {
 
         // Oscillate servo position smoothly with sine wave
         double position = midpoint + amplitude * Math.sin(2 * Math.PI * speed * t);
-        led.setPosition(position);
+//        led.setPosition(position);
 
         telemetry.addData("Press B (circle) to reset spindexer", ":)");
         telemetry.addData("Spindexer Position", spindexer.getCurrentPosition());

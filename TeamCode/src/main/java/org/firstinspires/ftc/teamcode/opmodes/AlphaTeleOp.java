@@ -34,7 +34,7 @@ public class AlphaTeleOp extends CommandOpMode {
     private ShooterSubsystem shooter;
     private SpindexerSubsystem spindexer;
     private ColorSubsystem colorSensor;
-    private LEDSubsystem led;
+//    private LEDSubsystem led;
 
     public GamepadEx driver1;
     public GamepadEx driver2;
@@ -95,7 +95,7 @@ public class AlphaTeleOp extends CommandOpMode {
         shooter = new ShooterSubsystem(hardwareMap);
         spindexer = new SpindexerSubsystem(hardwareMap);
         colorSensor = new ColorSubsystem(hardwareMap);
-        led = new LEDSubsystem(hardwareMap);
+//        led = new LEDSubsystem(hardwareMap);
         voltageSensor = hardwareMap.get(VoltageSensor.class, "Control Hub");
 
         super.reset();
@@ -229,33 +229,33 @@ public class AlphaTeleOp extends CommandOpMode {
             }
         }
         follower.update();
-        if (shooter.getActualVelocity() > 300) { //shooting mode
-            if (shooter.getActualVelocity() - shooter.getTargetVelocity() < -30) {
-                led.setColor(LEDSubsystem.LEDState.RED);
-            }
-            else if (shooter.getActualVelocity() - shooter.getTargetVelocity() > 50) {
-                led.setColor(LEDSubsystem.LEDState.BLUE);
-            }
-            else {
-                led.setColor(LEDSubsystem.LEDState.GREEN);
-            }
-        }
-        else if (!intakeState.equals(IntakeState.STOP)){ //intaking mode
-            if (colorSensor.checkIfGreen()) {
-                led.setColor(LEDSubsystem.LEDState.GREEN);
-            }
-            else if (colorSensor.checkIfPurple()) {
-                led.setColor(LEDSubsystem.LEDState.VIOLET);
-            }
-            else if (colorSensor.checkIfWhite()){
-                led.setColor(LEDSubsystem.LEDState.WHITE);
-            }
-            else {
-                led.setColor(LEDSubsystem.LEDState.YELLOW);
-            }
-        } else {
-            led.setColor(LEDSubsystem.LEDState.OFF);
-        }
+//        if (shooter.getActualVelocity() > 300) { //shooting mode
+//            if (shooter.getActualVelocity() - shooter.getTargetVelocity() < -30) {
+//                led.setColor(LEDSubsystem.LEDState.RED);
+//            }
+//            else if (shooter.getActualVelocity() - shooter.getTargetVelocity() > 50) {
+//                led.setColor(LEDSubsystem.LEDState.BLUE);
+//            }
+//            else {
+//                led.setColor(LEDSubsystem.LEDState.GREEN);
+//            }
+////        }
+//        else if (!intakeState.equals(IntakeState.STOP)){ //intaking mode
+//            if (colorSensor.checkIfGreen()) {
+//                led.setColor(LEDSubsystem.LEDState.GREEN);
+//            }
+//            else if (colorSensor.checkIfPurple()) {
+//                led.setColor(LEDSubsystem.LEDState.VIOLET);
+//            }
+//            else if (colorSensor.checkIfWhite()){
+//                led.setColor(LEDSubsystem.LEDState.WHITE);
+//            }
+//            else {
+//                led.setColor(LEDSubsystem.LEDState.YELLOW);
+//            }
+//        } else {
+//            led.setColor(LEDSubsystem.LEDState.OFF);
+//        }
 
         if (lastVoltageCheck.milliseconds() > 500) { //check every 500ms
             currentVoltage = voltageSensor.getVoltage();
